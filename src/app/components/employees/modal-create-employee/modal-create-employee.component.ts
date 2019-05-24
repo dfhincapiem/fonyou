@@ -69,7 +69,7 @@ export class ModalCreateEmployeeComponent {
       ()=>{
         this.employeesService.getEmployees().subscribe(
           (val)=>{
-            console.log(val);
+            this.newEmployeeEmitter.emit();
             this.modalService.dismissAll();
           }
         );

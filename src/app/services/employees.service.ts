@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 
+import { environment } from '../../environments/environment';
 import { Employee } from '../../app/models/employee';
-
-
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -24,11 +23,11 @@ const httpOptions = {
 
 
 export class EmployeesService {
-  apiUrl = 'employee/employee';
+  apiUrl = environment.apiRoot+'employee/employee';
   //private handleError: HandleError;
 
-  constructor(
-    private http: HttpClient) {
+  constructor(private http: HttpClient) {
+    console.log("API ROOT: ", this.apiUrl);
   }
 
   getEmployees(): Observable<Employee[]> {

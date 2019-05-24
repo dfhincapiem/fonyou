@@ -17,15 +17,10 @@ export class EmployeesComponent implements OnInit {
 
 
   constructor(private employeeService: EmployeesService) {
-
   }
 
   ngOnInit() {
     this.getEmployees();
-
-
-
-
   }
 
   getEmployees() {
@@ -34,12 +29,6 @@ export class EmployeesComponent implements OnInit {
       console.log("DESDE EMPLOYEES", this.employees);
     });
   }
-
-
-  test(){
-    console.log("dsadas");
-  }
-
 
 
 
