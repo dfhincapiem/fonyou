@@ -16,8 +16,9 @@ export class EmployeeComponent implements OnInit {
 
   @Input() employee: Employee;
   @Output() employeeEmitter = new EventEmitter<any>();
-
   @Output() employeeId = new EventEmitter<number>();
+  @Output() updateEmployeeDataList = new EventEmitter<any>();
+
 
   constructor() {
 
@@ -25,6 +26,11 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit() {
     this.isEditing = false;
+  }
+
+  cancelData(){
+    this.updateEmployeeDataList.emit();
+    this.displayMenuEdit();
   }
 
   displayMenuEdit() {
@@ -38,6 +44,5 @@ export class EmployeeComponent implements OnInit {
   deleteEmployeeReq(id) {
     this.employeeId.emit(id);
   }
-
 
 }

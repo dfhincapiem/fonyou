@@ -6,3 +6,13 @@
 .button-icons {
   width: 125px;
 }
+
+
+@media (max-width: 768px) {
+  .edit-icon {
+    width: 50%;
+    p{
+      font-size: 9px;
+    }
+  }
+}

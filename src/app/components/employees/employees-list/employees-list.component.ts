@@ -28,26 +28,31 @@ export class EmployeesListComponent implements OnInit {
 
   }
 
-  test(employee: Employee) {
+  putEmployeeReq(employee: Employee) {
     this.hasFormError = false;
     if (employee.name.length < 1 || employee.lastName.length < 1 || employee.pay <= 0 || employee.birthDate.length < 1 ) {
       this.hasFormError = true;
+      setTimeout(()=>{this.hasFormError = false}, 5000);
     }
+    this.employeesService.updateEmployee(employee).subscribe( (val)=> {
+      this.employeesService.getEmployees().subscribe(
+         () => {
+            this.updateEmployeeData();
+          }
+        );
+      });
 
   }
 
   deleteEmployeeReq(employeeId){
     this.employeesService.deleteEmployee(employeeId).subscribe(()=>{
-      this.getEmployeesEmitter.emit();
+      this.updateEmployeeData();
     });
-
-    setTimeout(
-      ()=>{
-    this.employeesService.getEmployees().subscribe(
-      (val)=>console.log(val)
-    )},5000
-    );
-
   }
+
+  updateEmployeeData(){
+    this.getEmployeesEmitter.emit();
+  }
+
 
 }

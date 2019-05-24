@@ -8,38 +8,23 @@ import { Employee } from '../models/employee';
 })
 export class InMemoryDataService implements InMemoryDbService {
 
-
-
   createDb() {
     const employee = [
-      // { id: 11,
-      //   name: 'Name11',
-      //   lastName: "lastName11",
-      //   birthDate: "1990-11-27",
-      //   pay: 5000000
 
-      // },
-      { id: 12,
+      {
         name: 'Name12',
         lastName: "lastName12",
+        pay: 5000000,
         birthDate: "12-12-1988",
-        pay: 5000000
-
+        id: 12,
       },
-      { id: 13,
-        name: 'Name13',
-        lastName: "lastName13",
-        birthDate: "11-12-1950",
-        pay: 5000000
-
+      {
+        name: 'Name12',
+        lastName: "lastName12",
+        pay: 5000000,
+        birthDate: "12-12-1988",
+        id: 13,
       },
-      { id: 14,
-        name: 'Name14',
-        lastName: "lastName14",
-        birthDate: "11-12-1950",
-        pay: 5000000
-
-      }
     ];
 
     return {employee};
