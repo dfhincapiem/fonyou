@@ -1,0 +1,18 @@
+.table {
+  margin-top: 50px;
+}
+.edit-icon {
+  display: inline-block;
+  width: 50px;
+}
+
+.not-shown {
+  display: none;
+}
+
+.error {
+  display: block;
+  p {
+    color: red;
+  }
+}

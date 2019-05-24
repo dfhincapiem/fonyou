@@ -1,0 +1,21 @@
+<h1>List Employees</h1>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">BirthDate</th>
+      <th scope="col">Pay</th>
+      <th scope="col">Icons</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr [employee]="employee" (employeeId)="deleteEmployeeReq($event)" (employeeEmitter)="test($event)" app-employee  *ngFor="let employee of employees">
+    </tr>
+  </tbody>
+</table>
+
+<div class="not-shown" [class]="hasFormError ? 'error' : 'not-shown'">
+  <p>NONE FIELD CAN BE EMPTY TO BE SAVED, PLEASE CHECK AND TRY AGAIN</p>
+</div>
