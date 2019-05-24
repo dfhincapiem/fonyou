@@ -5,61 +5,45 @@ import { HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Employee } from '../../app/models/employee';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-
-
 
 const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'Authorization': 'my-auth-token'
-  })
+  headers: new HttpHeaders({ 'Content-Type':  'application/json'  })
 };
-
 
 @Injectable({
   providedIn: 'root',
 })
 
-
 export class EmployeesService {
-  apiUrl = environment.apiRoot+'employee/employee';
-  //private handleError: HandleError;
+
+  // SET API-URL ADRESS
+
+  private readonly apiUrl = environment.apiRoot + 'employee/employee';
 
   constructor(private http: HttpClient) {
-    console.log("API ROOT: ", this.apiUrl);
+    console.log('API ROOT: ', this.apiUrl);
   }
 
   getEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(this.apiUrl)
-      .pipe(
-        //catchError(this.handleError('getHeroes', []))
-      );
+      .pipe();
   }
 
 
-  createEmployee (employee: Employee): Observable<Employee> {
+  createEmployee(employee: Employee): Observable<Employee> {
     return this.http.post<Employee>(this.apiUrl, employee, httpOptions)
-      .pipe(
-        //catchError(this.handleError('addHero', hero))
-      );
+      .pipe();
   }
 
-  deleteEmployee (id: number): Observable<{}> {
-    const url = `${this.apiUrl}/${id}`; // DELETE api/heroes/42
+  deleteEmployee(id: number): Observable<{}> {
+    const url = `${this.apiUrl}/${id}`;
     return this.http.delete(url, httpOptions)
-      .pipe(
-        //catchError(this.handleError('deleteHero'))
-      );
+      .pipe();
   }
 
-  updateEmployee (employee: Employee): Observable<Employee> {
-
-
+  updateEmployee(employee: Employee): Observable<Employee> {
     return this.http.put<Employee>(this.apiUrl, employee, httpOptions)
-      .pipe(
-        //catchError(this.handleError('updateHero', hero))
-      );
+      .pipe();
   }
 }
 

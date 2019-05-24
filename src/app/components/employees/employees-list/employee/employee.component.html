@@ -3,23 +3,28 @@
 <td *ngIf="!isEditing">{{employee.lastName}}</td>
 <td *ngIf="!isEditing">{{employee.birthDate | date: 'dd/MM/yyyy'}}</td>
 <td *ngIf="!isEditing">{{employee.pay}}</td>
+
 <td *ngIf="isEditing" >
   <input type="text" class="form-control" value="{{employee.name}}" (input)="employee.name = $event.target.value">
 </td>
+
 <td *ngIf="isEditing" >
   <input  type="text" class="form-control" value="{{employee.lastName}}" (input)="employee.lastName = $event.target.value">
 </td>
+
 <td *ngIf="isEditing" >
-    <input  type="date" class="form-control" value="{{employee.birthDate}}" (input)="employee.birthDate = $event.target.value">
-  </td>
-  <td *ngIf="isEditing" >
-    <input type="number" min="0" class="form-control" value="{{employee.pay}}" (input)="employee.pay = $event.target.value">
-  </td>
+  <input  type="date" class="form-control" value="{{employee.birthDate}}" (input)="employee.birthDate = $event.target.value">
+</td>
+
+<td *ngIf="isEditing" >
+  <input type="number" min="0" class="form-control" value="{{employee.pay}}" (input)="employee.pay = $event.target.value">
+</td>
 
 <td *ngIf="!isEditing" class="button-icons">
     <div (click)="displayMenuEdit()" class="edit-icon"><span class="fas fa-edit"></span><p>Edit</p></div>
     <div (click)="deleteEmployeeReq(employee.id)" class="edit-icon"><span class="fa fa-trash-alt"></span><p>Delete</p></div>
 </td>
+
 <td *ngIf="isEditing" class="button-icons">
     <div (click)="sendEmployeeReq(employee)" class="edit-icon"><span class="far fa-save"></span><p>Save</p></div>
     <div (click)="cancelData()" class="edit-icon"><span class="fas fa-times-circle"></span><p>Cancel</p></div>

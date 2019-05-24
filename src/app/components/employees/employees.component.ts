@@ -14,8 +14,6 @@ export class EmployeesComponent implements OnInit {
 
   public employees: Employee[];
 
-
-
   constructor(private employeeService: EmployeesService) {
   }
 
@@ -24,9 +22,9 @@ export class EmployeesComponent implements OnInit {
   }
 
   getEmployees() {
-    this.employeeService.getEmployees().subscribe((val)=>{
+    this.employeeService.getEmployees().subscribe((val) => {
       this.employees = val;
-      console.log("DESDE EMPLOYEES", this.employees);
+      console.log('DATA EMPLOYEE :D ->', this.employees);
     });
   }
 

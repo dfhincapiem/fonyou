@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { Employee } from '../../../../models/employee';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: '[app-employee]',
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.scss']
@@ -11,24 +11,18 @@ import { Employee } from '../../../../models/employee';
 export class EmployeeComponent implements OnInit {
 
   public isEditing: boolean;
-  test2: FormGroup;
-
-
   @Input() employee: Employee;
   @Output() employeeEmitter = new EventEmitter<any>();
   @Output() employeeId = new EventEmitter<number>();
   @Output() updateEmployeeDataList = new EventEmitter<any>();
 
-
-  constructor() {
-
-  }
+  constructor() {}
 
   ngOnInit() {
     this.isEditing = false;
   }
 
-  cancelData(){
+  cancelData() {
     this.updateEmployeeDataList.emit();
     this.displayMenuEdit();
   }
@@ -37,7 +31,7 @@ export class EmployeeComponent implements OnInit {
     this.isEditing = !this.isEditing;
   }
 
-  sendEmployeeReq(val){
+  sendEmployeeReq(val) {
     this.employeeEmitter.emit(val);
   }
 

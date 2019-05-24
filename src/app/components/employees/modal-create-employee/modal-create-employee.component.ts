@@ -1,10 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeesService } from '../../../services/employees.service';
 import { Employee } from '../../../models/employee';
-
 
 @Component({
   selector: 'app-modal-create-employee',
@@ -12,26 +11,24 @@ import { Employee } from '../../../models/employee';
   styleUrls: ['./modal-create-employee.component.scss']
 })
 
-
 export class ModalCreateEmployeeComponent {
 
-  closeResult: string;
+  public closeResult: string;
 
-  employeeDataForm: FormGroup;
+  public employeeDataForm: FormGroup;
 
-  isFormValid: boolean;
+  public isFormValid: boolean;
 
   @Output() newEmployeeEmitter = new EventEmitter<any>();
 
-  constructor(private modalService: NgbModal, private employeesService: EmployeesService,
-              private formGroup: FormBuilder) {
-                this.employeeDataForm = this.formGroup.group({
-                  name: ['', Validators.required ],
-                  lastName: ['', Validators.required ],
-                  pay: ['', Validators.required ],
-                  birthDate: ['', Validators.required ],
-               });
-               this.isFormValid = true;
+  constructor(  private modalService: NgbModal, private employeesService: EmployeesService, private formGroup: FormBuilder) {
+                      this.employeeDataForm = this.formGroup.group({
+                        name: ['', Validators.required ],
+                        lastName: ['', Validators.required ],
+                        pay: ['', Validators.required ],
+                        birthDate: ['', Validators.required ],
+                    });
+                      this.isFormValid = true;
 
   }
 
@@ -53,9 +50,9 @@ export class ModalCreateEmployeeComponent {
     }
   }
 
-  submitForm(employeeDataForm: FormGroup){
+  submitForm(employeeDataForm: FormGroup) {
     this.isFormValid = true;
-    if(employeeDataForm.invalid){
+    if (employeeDataForm.invalid) {
       this.isFormValid = false;
       return;
     }
@@ -63,19 +60,18 @@ export class ModalCreateEmployeeComponent {
     this.createEmployeeReq(newEmployeeData);
   }
 
-  createEmployeeReq(employee: Employee){
+  createEmployeeReq(employee: Employee) {
 
     this.employeesService.createEmployee(employee).subscribe(
-      ()=>{
+      () => {
         this.employeesService.getEmployees().subscribe(
-          (val)=>{
+          (val) => {
             this.newEmployeeEmitter.emit();
             this.modalService.dismissAll();
           }
         );
       }
     );
-
   }
 
 }
