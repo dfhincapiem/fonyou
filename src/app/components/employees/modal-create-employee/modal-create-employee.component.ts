@@ -37,7 +37,6 @@ export class ModalCreateEmployeeComponent {
   }
 
   test(){
-    this.emplo
     this.modalService.dismissAll();
   }
 

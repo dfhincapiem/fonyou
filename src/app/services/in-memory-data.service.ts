@@ -11,7 +11,7 @@ export class InMemoryDataService implements InMemoryDbService {
 
 
   createDb() {
-    const heroes = [
+    const employee = [
       // { id: 11,
       //   name: 'Name11',
       //   lastName: "lastName11",
@@ -42,7 +42,7 @@ export class InMemoryDataService implements InMemoryDbService {
       }
     ];
 
-    return {heroes};
+    return {employee};
   }
 
   // Overrides the genId method to ensure that a hero always has an id.

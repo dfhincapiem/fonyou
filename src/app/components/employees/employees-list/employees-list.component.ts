@@ -37,7 +37,7 @@ export class EmployeesListComponent implements OnInit {
   }
 
   deleteEmployeeReq(employeeId){
-    this.employeesService.deleteHero(employeeId).subscribe(()=>{
+    this.employeesService.deleteEmployee(employeeId).subscribe(()=>{
       this.getEmployeesEmitter.emit();
     });
 
