@@ -4,7 +4,11 @@
 
 export const environment = {
   production: false,
-  apiRoot: 'http://normal.com/'
+
+  //This property has no effect as it's working with memory web-api
+  apiRoot: ''
+
+
 };
 
 /*

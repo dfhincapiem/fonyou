@@ -12,6 +12,7 @@ import { EmployeesListComponent } from './components/employees/employees-list/em
 import { EmployeeComponent } from './components/employees/employees-list/employee/employee.component';
 import { ModalCreateEmployeeComponent } from './components/employees/modal-create-employee/modal-create-employee.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -26,9 +27,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
+    environment.production ? [] :
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { passThruUnknownUrl: true }),
     FormsModule,
     ReactiveFormsModule,
     NgbModule
